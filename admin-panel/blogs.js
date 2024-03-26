@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
-
     function displayComments(comments, commentsList) {
         commentsList.innerHTML = '';
-    
+
         comments.forEach(function(comment) {
             const commentItem = document.createElement('li');
             commentItem.textContent = comment;
             commentsList.appendChild(commentItem);
         });
     }
-    
     function displayBlogs(blogs) {
         const blogsContainer = document.getElementById("all-blogs");
         blogsContainer.innerHTML = ""; 
@@ -123,24 +121,23 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
                 });
 
-                submitCommentButtons.forEach(function(button) {
-                    button.addEventListener("click", function() {
-                        const blogId = this.parentElement.previousElementSibling.previousElementSibling.dataset.blogId;
-                        const commentInput = this.parentElement.querySelector(".comment-input");
-                        const comment = commentInput.value.trim();
-                        if (comment !== "") {
-                            const index = blogs.findIndex(blog => blog.id == blogId);
-                            if (index !== -1) {
-                                blogs[index].comments = blogs[index].comments || [];
-                                blogs[index].comments.push(comment);
-                                saveBlogsToLocalStorage(blogs);
-                                const commentsList = this.parentElement.previousElementSibling.querySelector(".comments-list");
-                                displayComments(blogs[index].comments, commentsList);
-                                commentInput.value = "";
-                            }
+
+                submitCommentButton.addEventListener("click", function() {
+                    const blogId = this.parentElement.parentElement.querySelector(".like-btn").dataset.blogId;
+                    const commentInput = this.parentElement.querySelector(".comment-input");
+                    const comment = commentInput.value.trim();
+                    if (comment !== "") {
+                        const index = blogs.findIndex(blog => blog.id == blogId);
+                        if (index !== -1) {
+                            blogs[index].comments = blogs[index].comments || [];
+                            blogs[index].comments.push(comment);
+                            saveBlogsToLocalStorage(blogs);
+                            const commentsList = this.parentElement.parentElement.querySelector(".comments-list");
+                            displayComments(blogs[index].comments, commentsList);
+                            commentInput.value = "";
                         }
-                    });
-                });
+                    }
+                });                
                 
             });
             
@@ -226,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
         contentInput.value = blog.content;
         imageInput.value = blog.imageUrl;
 
-        modal.style.display = "block"; 
+        modal.style.display =  "block"; 
     }
 
     function closeUpdateModal() {
@@ -256,5 +253,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let blogs = getBlogsFromLocalStorage();
     displayBlogs(blogs);
-    
 });
+
