@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('show');
     });
 
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
+    document.querySelector('.contact-form form').addEventListener('submit', function (event) {
         event.preventDefault();
 
         const name = document.getElementById('name').value;
