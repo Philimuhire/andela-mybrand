@@ -119,4 +119,21 @@ button:hover{
     background-color: #51b8e8;
 }
 
+.success-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #51b8e8; 
+    padding: 10px 20px;
+    border-radius: 10px 20px;
+    z-index: 9999; 
+  }
+  
+  .success-dialog {
+    text-align: center;
+  }
+  
+
 
