@@ -6,7 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('show');
     });
 
+<<<<<<< Updated upstream
     document.querySelector('.contact-form form').addEventListener('submit', function (event) {
+=======
+<<<<<<< Updated upstream
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+=======
+    document.querySelector('.contact-form form').addEventListener('submit', async function (event) {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         event.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -14,17 +22,32 @@ document.addEventListener('DOMContentLoaded', function () {
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
 
-        const query = {
-            name: name,
-            email: email,
-            subject: subject,
-            message: message
-        };
+        try {
+            const response = await fetch('http://localhost:5000/contact/saveContactQuery', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                })
+            });
 
-        storeQuery(query);
-
-        alert('Your query has been submitted successfully!');
+            if (response.ok) {
+                alert('Your query has been submitted successfully!');
+            } else {
+                const data = await response.json();
+                throw new Error(data.message || 'Failed to submit query');
+            }
+        } catch (error) {
+            console.error('Error submitting query:', error);
+            alert('Failed to submit query. Please try again later.');
+        }
     });
+<<<<<<< Updated upstream
 
     function storeQuery(query) {
         let queries = localStorage.getItem('contactQueries');
@@ -38,3 +61,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Updated queries:', queries); 
     }
 });
+<<<<<<< Updated upstream
+=======
+=======
+});
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
