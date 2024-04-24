@@ -6,15 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('show');
     });
 
-<<<<<<< Updated upstream
-    document.querySelector('.contact-form form').addEventListener('submit', function (event) {
-=======
-<<<<<<< Updated upstream
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-=======
     document.querySelector('.contact-form form').addEventListener('submit', async function (event) {
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
         event.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -47,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Failed to submit query. Please try again later.');
         }
     });
-<<<<<<< Updated upstream
 
     function storeQuery(query) {
         let queries = localStorage.getItem('contactQueries');
@@ -61,9 +53,3 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Updated queries:', queries); 
     }
 });
-<<<<<<< Updated upstream
-=======
-=======
-});
->>>>>>> Stashed changes
->>>>>>> Stashed changes
