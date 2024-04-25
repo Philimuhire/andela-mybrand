@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import ContactInfo from './components/ContactInfo'; 
+import Footer from './components/Footer';
 
 const contactDetails = [
     { label: 'Names: ', value: 'Philbert Muhire' },
@@ -18,4 +19,6 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('info') 
 );
+
+ReactDOM.render(<Footer />, document.getElementById('footer'));
 

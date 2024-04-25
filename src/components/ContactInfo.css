@@ -5,7 +5,7 @@
     padding: 0px 50px;
     color: #333;
     background-image: linear-gradient(to right, #c5c1c1, #cce0ea);
-    border-radius: 50px;
+    border-radius: 20px;
     transition: background-color 0.3s, color 0.3s;
 }
 .my-info p{
