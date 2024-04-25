@@ -70,7 +70,7 @@ h2{
     text-align: center;
 }
 
-.blog2-content{
+.blog3-content{
     margin: 50px auto;
     width: 700px;
 }
@@ -91,10 +91,7 @@ article{
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
-<<<<<<< Updated upstream
-=======
     border-radius: 50px;
->>>>>>> Stashed changes
 }
 
 .reactions button i{
@@ -106,17 +103,13 @@ article{
     background-color: #101D23;
     padding: 10px 20px;
     text-align: center;
-<<<<<<< Updated upstream
-=======
     border-radius: 50px;
->>>>>>> Stashed changes
 }
 
 .read-more a{
     color: #fff;
     text-decoration: none;
 }
-
 .read-more:hover{
     background-color: #51b8e8;
 }
