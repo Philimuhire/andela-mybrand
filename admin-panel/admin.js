@@ -1,35 +1,39 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        // Fetch query count
-        const queryCountResponse = await fetch('/contact/queryCount');
+        const queryCountResponse = await fetch('http://localhost:5000/contact/queryCount');
         if (!queryCountResponse.ok) {
             throw new Error('Failed to fetch query count');
         }
         const queryCountData = await queryCountResponse.json();
+        console.log('Query count data:', queryCountData); 
+
         const queryCountSpan = document.getElementById('query-count');
         if (queryCountSpan) {
-            queryCountSpan.textContent = queryCountData.count.toString();
+            if (queryCountData && queryCountData.queryCount !== undefined) {
+                queryCountSpan.textContent = queryCountData.queryCount.toString();
+            } else {
+                console.error('Query count data or queryCount property is undefined');
+            }
         } else {
             console.error('Element with ID "query-count" not found');
         }
 
-        // Fetch all blogs
         const allBlogsResponse = await fetch('http://localhost:5000/blog/getAllBlogs');
         if (!allBlogsResponse.ok) {
             throw new Error('Failed to fetch all blogs');
         }
         const allBlogsData = await allBlogsResponse.json();
-        
-        // Display the last two blogs
+        console.log('All blogs data:', allBlogsData); 
+
         const recentBlogsContainer = document.getElementById('recent-blogs');
         if (recentBlogsContainer) {
-            const lastTwoBlogs = allBlogsData.slice(-2); // Get the last two blogs
+            const lastTwoBlogs = allBlogsData.slice(-2); 
             lastTwoBlogs.forEach(blog => {
                 const blogElement = document.createElement('div');
                 blogElement.classList.add('blog-item');
                 blogElement.innerHTML = `
                     <h4>${blog.title}</h4>
-                    ${blog.image}
+                    <img src="${blog.image}" alt="${blog.title} Image">
                     <p>${blog.content}</p>
                 `;
                 recentBlogsContainer.appendChild(blogElement);
@@ -41,4 +45,3 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching data:', error);
     }
 });
-
