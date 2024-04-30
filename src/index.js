@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import ContactInfo from './components/ContactInfo'; 
 import Footer from './components/Footer';
+import ContactForm from './components/ContactForm';
 
 const contactDetails = [
     { label: 'Names: ', value: 'Philbert Muhire' },
@@ -21,4 +22,11 @@ ReactDOM.render(
 );
 
 ReactDOM.render(<Footer />, document.getElementById('footer'));
+
+ReactDOM.render(
+    <React.StrictMode>
+        <ContactForm />
+    </React.StrictMode>,
+    document.querySelector('.contact-form') 
+);
 
